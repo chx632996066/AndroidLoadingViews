@@ -18,13 +18,13 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             >
-            <com.hongxi.androidloadingviews.loadingviews.LoadingView_PacMan
+            <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
                 android:layout_width="72dp"
                 android:layout_height="72dp"
 
                 />
 
-            <com.hongxi.androidloadingviews.loadingviews.LoadingView_PacMan
+            <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginTop="16dp"
@@ -32,7 +32,7 @@
                 loadingviews:duration="400"
                 />
 
-            <com.hongxi.androidloadingviews.loadingviews.LoadingView_PacMan
+            <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginTop="16dp"

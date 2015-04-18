@@ -17,7 +17,7 @@ import com.hongxi.androidloadingviews.R;
 /**
  * Created by Hongxi on 2015/4/16.
  */
-public class LoadingView_PacMan extends View {
+public class LoadingView_Pacman extends View {
     //default pacmanAndPeasColor of pacman and peas
     private final int DEFAULT_COLOR = 0XFF0099CC;
     //default pacmanAndPeasColor of pacman's eye
@@ -58,13 +58,13 @@ public class LoadingView_PacMan extends View {
     private Paint paint;
     private Paint eyePaint;
 
-    public LoadingView_PacMan(Context context, AttributeSet attrs) {
+    public LoadingView_Pacman(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView_PacMan);
-        pacmanAndPeasColor = typedArray.getColor(R.styleable.LoadingView_PacMan_pacman_and_peas_color, DEFAULT_COLOR);
-        eyeColor = typedArray.getColor(R.styleable.LoadingView_PacMan_eye_color, DEFAULT_EYE_COLOR);
-        duration = typedArray.getColor(R.styleable.LoadingView_PacMan_duration, DEFAULT_DURATION);
-        maxMouthAngel = typedArray.getColor(R.styleable.LoadingView_PacMan_max_mouth_angel, DEFAULT_MAX_ANGEL);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView_Pacman);
+        pacmanAndPeasColor = typedArray.getColor(R.styleable.LoadingView_Pacman_pacman_and_peas_color, DEFAULT_COLOR);
+        eyeColor = typedArray.getColor(R.styleable.LoadingView_Pacman_eye_color, DEFAULT_EYE_COLOR);
+        duration = typedArray.getColor(R.styleable.LoadingView_Pacman_duration, DEFAULT_DURATION);
+        maxMouthAngel = typedArray.getColor(R.styleable.LoadingView_Pacman_max_mouth_angel, DEFAULT_MAX_ANGEL);
         typedArray.recycle();
 
         init();

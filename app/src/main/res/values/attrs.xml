@@ -3,7 +3,7 @@
 
 
     <!-- LoadingView_PacMan -->
-    <declare-styleable name="LoadingView_PacMan">
+    <declare-styleable name="LoadingView_Pacman">
         <attr name="pacman_and_peas_color" format="color" />
         <attr name="eye_color" format="color" />
         <attr name="max_mouth_angel" format="integer" />
