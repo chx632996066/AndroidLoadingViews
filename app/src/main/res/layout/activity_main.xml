@@ -29,6 +29,7 @@
                 android:layout_height="72dp"
                 android:layout_marginTop="16dp"
                 loadingviews:pacman_and_peas_color="#ff0000"
+                loadingviews:duration="400"
                 />
 
             <com.hongxi.androidloadingviews.loadingviews.LoadingView_PacMan
@@ -36,6 +37,7 @@
                 android:layout_height="72dp"
                 android:layout_marginTop="16dp"
                 loadingviews:pacman_and_peas_color="#00ff00"
+                loadingviews:duration="200"
                 />
 
             <TextView

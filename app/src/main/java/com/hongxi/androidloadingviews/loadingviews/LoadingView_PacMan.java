@@ -15,7 +15,7 @@ import android.view.animation.LinearInterpolator;
 import com.hongxi.androidloadingviews.R;
 
 /**
- * Created by Administrator on 2015/4/16.
+ * Created by Hongxi on 2015/4/16.
  */
 public class LoadingView_PacMan extends View {
     //default pacmanAndPeasColor of pacman and peas
@@ -58,34 +58,6 @@ public class LoadingView_PacMan extends View {
     private Paint paint;
     private Paint eyePaint;
 
-
-    private void changeMouthAngel() {
-        ObjectAnimator animator = ObjectAnimator.ofInt(new Object(), "", 0, maxMouthAngel*2);
-        animator.setEvaluator(new IntEvaluator());
-        animator.setInterpolator(new LinearInterpolator());
-        animator.setDuration(duration);
-        animator.setRepeatCount(Integer.MAX_VALUE);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-
-                currentMouthAngel = (int) animation.getAnimatedValue();
-                if(currentMouthAngel > maxMouthAngel){
-                    currentMouthAngel = maxMouthAngel * 2 -currentMouthAngel;
-                }
-
-                move_X = ((int)animation.getAnimatedValue())*peaDistance/maxMouthAngel/2;
-
-                invalidate();
-            }
-        });
-
-        animator.start();
-    }
-
-
-
-
     public LoadingView_PacMan(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView_PacMan);
@@ -117,6 +89,7 @@ public class LoadingView_PacMan extends View {
         int minSideSize = mViewWidth < mViewHeight ? mViewWidth : mViewHeight;
         pacManRadius = minSideSize >>2;
 
+        //calculate the position of pacman and his eye
         int left = (mViewWidth - minSideSize)>>1;
         int top = (mViewHeight >> 1) -  pacManRadius;
         int right = left +( pacManRadius <<1 );
@@ -125,9 +98,12 @@ public class LoadingView_PacMan extends View {
         eye_X = (right + left)>>1;
         eye_Y = top + ((bottom-top) >>2);
 
+
         peaRadius = pacManRadius / DEFAULT_RADIUS_TIMES;
+        // distance between 2 peas
         peaDistance = pacManRadius ;
 
+        //calculate the original position of 3 peas
         peas_Y = (mViewHeight >> 1);
         pea1_X = right + (peaDistance >> 1);
         pea2_X = pea1_X + peaDistance;
@@ -146,9 +122,31 @@ public class LoadingView_PacMan extends View {
         canvas.drawCircle(pea3_X- move_X, peas_Y, peaRadius, paint);
     }
 
+    private void startAnimation() {
+        ObjectAnimator animator = ObjectAnimator.ofInt(new Object(), "", 0, maxMouthAngel*2);
+        animator.setEvaluator(new IntEvaluator());
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration(duration);
+        animator.setRepeatCount(Integer.MAX_VALUE);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                currentMouthAngel = (int) animation.getAnimatedValue();
+                if(currentMouthAngel > maxMouthAngel){
+                    currentMouthAngel = maxMouthAngel * 2 -currentMouthAngel;
+                }
+                //calculate the x-axis displacement of peas by currentMouthAngel
+                move_X = ((int)animation.getAnimatedValue())*peaDistance/maxMouthAngel/2;
+                invalidate();
+            }
+        });
+
+        animator.start();
+    }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        changeMouthAngel();
+        startAnimation();
     }
 }
