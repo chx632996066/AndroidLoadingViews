@@ -2,12 +2,18 @@
 <resources>
 
 
-    <!-- LoadingView_PacMan -->
+    <!-- LoadingView_Pacman -->
     <declare-styleable name="LoadingView_Pacman">
-        <attr name="pacman_and_peas_color" format="color" />
-        <attr name="eye_color" format="color" />
-        <attr name="max_mouth_angel" format="integer" />
-        <attr name="duration" format="integer" />
+        <attr name="pacman_main_color" format="color" />
+        <attr name="pacman_eye_color" format="color" />
+        <attr name="pacman_max_mouth_angel" format="integer" />
+        <attr name="pacman_duration" format="integer" />
+    </declare-styleable>
+
+    <!-- LoadingView_BallGridPulse-->
+    <declare-styleable name="LoadingView_BallGridPulse">
+        <attr name="ballgridpulse_color" format="color" />
+
     </declare-styleable>
 
 

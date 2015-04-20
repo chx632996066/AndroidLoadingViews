@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
+    android:background="#ff0000"
     >
 
     <ScrollView
@@ -18,27 +19,22 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             >
-            <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-
-                />
 
             <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginTop="16dp"
-                loadingviews:pacman_and_peas_color="#ff0000"
-                loadingviews:duration="400"
+                loadingviews:pacman_main_color="#ffffff"
+                loadingviews:pacman_eye_color="#ff0000"
+                loadingviews:pacman_duration="400"
                 />
 
-            <com.hongxi.androidloadingviews.loadingviews.LoadingView_Pacman
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_marginTop="16dp"
-                loadingviews:pacman_and_peas_color="#00ff00"
-                loadingviews:duration="200"
+            <com.hongxi.androidloadingviews.loadingviews.LoadingView_BallGridPulse
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                loadingviews:ballgridpulse_color="#ffff00"
                 />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,6 +42,7 @@
                 android:layout_marginTop="16dp"
                 android:text="更多LoadingViews敬请期待"
                 android:textSize="18sp"
+                android:textColor="#ffffff"
                 />
 
 
