@@ -52,6 +52,8 @@ public class LoadingView_Pacman extends View {
     private Paint paint;
     private Paint eyePaint;
 
+    private ObjectAnimator animator;
+
     public LoadingView_Pacman(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadingView_Pacman);
@@ -78,14 +80,12 @@ public class LoadingView_Pacman extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int mViewWidth = getMeasuredWidth();
-        int mViewHeight = getMeasuredHeight();
-        int minSideSize = mViewWidth < mViewHeight ? mViewWidth : mViewHeight;
+        int minSideSize = Math.min(getMeasuredWidth(), getMeasuredHeight());
         pacmanRadius = minSideSize >> 2;
 
         //calculate the position of pacman and his eye
-        float left = (mViewWidth - minSideSize) >> 1;
-        float top = (mViewHeight >> 1) - pacmanRadius;
+        float left = (getMeasuredWidth() - minSideSize) >> 1;
+        float top = (getMeasuredHeight() >> 1) - pacmanRadius;
         float right = left + (pacmanRadius * 2);
         float bottom = top + (pacmanRadius * 2);
         pacmanRectF = new RectF(left, top, right, bottom);
@@ -97,12 +97,11 @@ public class LoadingView_Pacman extends View {
         peaDistance = pacmanRadius;
 
         //calculate the original position of 3 peas
-        peas_Y = (mViewHeight >> 1);
+        peas_Y = (getMeasuredHeight() >> 1);
         pea1_X = right + (peaDistance / 2);
         pea2_X = pea1_X + peaDistance;
         pea3_X = pea2_X + peaDistance;
 
-        startAnimation();
     }
 
     @Override
@@ -117,7 +116,7 @@ public class LoadingView_Pacman extends View {
     }
 
     private void startAnimation() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(new Object(), "", 0, maxMouthAngel * 2);
+        animator = ObjectAnimator.ofFloat(new Object(), "", 0, maxMouthAngel * 2);
         animator.setEvaluator(new FloatEvaluator());
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(duration);
@@ -135,5 +134,18 @@ public class LoadingView_Pacman extends View {
             }
         });
         animator.start();
+    }
+
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        startAnimation();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        animator.cancel();
     }
 }

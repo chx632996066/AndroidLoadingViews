@@ -3,6 +3,7 @@
 
     <string name="app_name">AndroidLoadingViews</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="more">More LoadingViews are coming</string>
 
 </resources>

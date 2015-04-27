@@ -25,6 +25,7 @@ public class LoadingView_BallGridPulse extends View {
     private int ballsColor = DEFAULT_COLOR;
     private float ballRadius;
 
+    private   ObjectAnimator animator;
 
     private Ball[] balls = new Ball[9];
 
@@ -47,12 +48,10 @@ public class LoadingView_BallGridPulse extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int mViewWidth = getMeasuredWidth();
-        int mViewHeight = getMeasuredHeight();
-        int minSideSize = mViewWidth < mViewHeight ? mViewWidth : mViewHeight;
+        int minSideSize = Math.min(getMeasuredWidth(),getMeasuredHeight());
 
-        int left = (mViewWidth - minSideSize) >> 1;
-        int top = ((mViewHeight - minSideSize) >> 1);
+        int left = (getMeasuredWidth() - minSideSize) >> 1;
+        int top = ((getMeasuredHeight() - minSideSize) >> 1);
         int right = left + minSideSize;
         int bottom = top + minSideSize;
 
@@ -76,7 +75,7 @@ public class LoadingView_BallGridPulse extends View {
         int delay = getRandom(1000);
         int duration = getRandom(1000) + 600;
 
-        ObjectAnimator animator = ObjectAnimator.ofFloat(new Object(), "", 1.0f, 0.5f);
+        animator = ObjectAnimator.ofFloat(new Object(), "", 1.0f, 0.5f);
         animator.setEvaluator(new FloatEvaluator());
         animator.setInterpolator(new LinearInterpolator());
         animator.setDuration(duration);
@@ -109,4 +108,9 @@ public class LoadingView_BallGridPulse extends View {
         }
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        animator.cancel();
+    }
 }

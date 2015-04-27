@@ -35,12 +35,17 @@
                 loadingviews:ballgridpulse_color="#ffff00"
                 />
 
+            <com.hongxi.androidloadingviews.loadingviews.LoadingView_BallPulse
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                />
 
             <TextView
+                android:id="@+id/tv_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="更多LoadingViews敬请期待"
+                android:text="@string/more"
                 android:textSize="18sp"
                 android:textColor="#ffffff"
                 />
